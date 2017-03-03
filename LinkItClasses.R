@@ -3,27 +3,31 @@
 # Refer to https://linkit.atlassian.net/wiki/display/LRA/LinkIt!+REST+API#suk= for more information
 # LinkItClasses.R
 # R 3.2.1?
+#
+# Alan B. Thorne, Jr.
+# Paul de Barros
+#
 
 
-# Object Status Table ####
+# Object Available Methods Table ####
 
-#	Object name						        |   Status
-# - - - - - - - - - - - - - - - - - - - - -
-#	School							          |    CRUD
-#	Staff							            |    CRUD
-#	Student							          |    CRUD
-#	Program							          |    CRUD
-#	District Term					        |    CRUD
-#	Class/Roster					        |    CRUD
-#	Test							            |     R
-#	Test Assignment					      |    CRU
-#	Test Result						        |    CR
-#	Test-Taker Pass-through		    |	   C
-#	Portal	Pass-through			    |    C
-#	OR and MG Pass-through		    |	   C
-#	Icon/Tab Authorization		    |	   CRUD
-#	Function Authorization		    |	
-#	Generate and Retrieve Reports	|
+#   Object name                     |   Method
+# - - - - - - - - - - - - - - - - - - - - - - - - -
+#   School                          |   CRUD
+#   Staff                           |   CRUD
+#   Student                         |   CRUD
+#   Program                         |   CRUD
+#   District Term                   |   CRUD
+#   Class/Roster                    |   CRUD
+#   Test                            |    R
+#   Test Assignment                 |   CRU
+#   Test Result                     |   CR
+#   Test-Taker Pass-through         |   C
+#   Portal Pass-through             |   C
+#   OR and MG Pass-through          |   C
+#   Icon/Tab Authorization          |   CRUD
+#   Function Authorization          |   	
+#   Generate and Retrieve Reports   |   
 #
 
 # Load Libraries ####
@@ -35,7 +39,7 @@ library("R6")
 source("LinkItURL.R")
 
 # Define Classes ####
-{ # School
+ # School
 School <- R6Class("School",
 
 	# Private variables
@@ -158,9 +162,9 @@ School <- R6Class("School",
 		}
 	) # public
 ) # School
-}
 
-{ # Staff
+
+ # Staff
 Staff <- R6Class("Staff",
 
 	# Private variables
@@ -254,14 +258,14 @@ Staff <- R6Class("Staff",
 		},
 		
 		toString = function() {
-			ret <- cat(LastName, ", ", FirstName, "\n\t",
-				"e-mail address:\t", EmailAddress, "\n\t",
-				"Phone number:\t", PhoneNumber, "\n\n\t",
-				"Status:\t", Status, "\n\t",
-				"Username and ID:\t", UserName, ", ", UserId, "\n\t",
-				"Role:\t", Role, "\n\t",
-				"Account created:\t", CreatedDate, "\n\t",
-				"Account last modified:\t", ModifiedDate)
+			ret <- cat(private$LastName, ", ", private$FirstName, "\n\t",
+				"e-mail address:\t", private$EmailAddress, "\n\t",
+				"Phone number:\t", private$PhoneNumber, "\n\n\t",
+				"Status:\t", private$Status, "\n\t",
+				"Username and ID:\t", private$UserName, ", ", private$UserId, "\n\t",
+				"Role:\t", private$Role, "\n\t",
+				"Account created:\t", private$CreatedDate, "\n\t",
+				"Account last modified:\t", private$ModifiedDate)
 			return(ret)
 		},
 		
@@ -300,9 +304,9 @@ Staff <- R6Class("Staff",
 		Sync = function() {}
 	)	
 )
-} # Staff
+# Staff
 
-{ # Student 
+ # Student 
 Student<- R6Class("Student",
 
 	private = list(
@@ -326,58 +330,75 @@ Student<- R6Class("Student",
 	
 	public = list (
 	
-		initialize = function() {},
+		initialize = function(StudentID, FirstName, MiddleName, LastName, Gender, Race, DateOfBirth, LocalCode, StateCode, Status, SISID, Grade, AdminSchoolID, CreatedDate, ModifiedDate) {
+		private$StudentID <- StudentID
+		private$FirstName <- FirstName
+		private$MiddleName <- MiddleName
+		private$LastName <- LastName
+		private$Gender <- Gender
+		private$Race <- Race
+		private$DateOfBirth <- DateOfBirth
+		private$LocalCode <- LocalCode
+		private$StateCode <- StateCode
+		private$Status <- Status
+		private$SISID <- SISID
+		private$Grade <- Grade
+		private$AdminSchoolID <- AdminSchoolID
+		private$CreatedDate <- CreatedDate
+		private$ModifiedDate <- ModifiedDate
+		private.isInit = TRUE
+		},
 		
-		setStudentID = function(!!!) {
-			private$!!! <-!!!
+		setStudentID = function(StudentID) {
+			private$StudentID <- StudentID
 		},
 
-		setFirstName = function(!!!) {
-			private$!!! <-!!!
+		setFirstName = function(FirstName) {
+			private$FirstName <- FirstName
 		},
 
-		setMiddleName = function(!!!) {
-			private$!!! <-!!!
+		setMiddleName = function(MiddleName) {
+			private$MiddleName <- MiddleName
 		},
 
-		setLastName = function(!!!) {
-			private$!!! <-!!!
+		setLastName = function(LastName) {
+			private$LastName <- LastName
 		},
 
-		setGender = function(!!!) {
-			private$!!! <-!!!
+		setGender = function(Gender) {
+			private$Gender <- Gender
 		},
 
-		setRace = function(!!!) {
-			private$!!! <-!!!
+		setRace = function(Race) {
+			private$Race <- Race
 		},
 
-		setDateOfBirth = function(!!!) {
-			private$!!! <-!!!
+		setDateOfBirth = function(DateOfBirth) {
+			private$DateOfBirth <- DateOfBirth
 		},
 
-		setLocalCode = function(!!!) {
-			private$!!! <-!!!
+		setLocalCode = function(LocalCode) {
+			private$LocalCode <- LocalCode
 		},
 
-		setStateCode = function(!!!) {
-			private$!!! <-!!!
+		setStateCode = function(StateCode) {
+			private$StateCode <- StateCode
 		},
 
-		setStatus = function(!!!) {
-			private$!!! <-!!!
+		setStatus = function(Status) {
+			private$Status <- Status
 		},
 
-		setSISID = function(!!!) {
-			private$!!! <-!!!
+		setSISID = function(SISID) {
+			private$SISID <- SISID
 		},
 
-		setGrade = function(!!!) {
-			private$!!! <-!!!
+		setGrade = function(Grade) {
+			private$Grade <- Grade
 		},
 
-		setAdminSchoolID = function(!!!) {
-			private$!!! <-!!!
+		setAdminSchoolID = function(AdminSchoolID) {
+			private$AdminSchoolID <- AdminSchoolID
 		},
 
 		setCreatedDate = function(cdate) {
@@ -389,11 +410,20 @@ Student<- R6Class("Student",
 		},
 
 		toString = function() {
-		
+			ret <- cat(private$LastName, ", ", private$FirstName, " ", private$MiddleName, "\n\t",
+				"ID, Grade:\t", private$StudentID, ", ", private$Grade, "th grade\n\t",
+				"DOB, Gender, Race:\t", private$DateOfBirth, ", ", private$Gender, ", ", private$Race, "\n\t",
+				"Local Code:\t", private$LocalCode, "\n\t",
+				"State Code:\t", private$StateCode, "\n\t",
+				"SISID:\t", private$SISID, "\n\t",
+				"Admin School ID:\t", private$AdminSchoolID, "\n\t",
+				"Record created:\t", private$CreatedDate, "\n\t",
+				"Record last modified:\t", private$ModifiedDate)
+			return(ret)
 		},
 
 		print = function() {
-		
+			print(self$toString())
 		},
 
 		isInit = function() {
@@ -428,9 +458,9 @@ Student<- R6Class("Student",
 
 	)
 )
-}
 
-{ # Program
+
+ # Program
 Program<- R6Class("Program",
 
 	private = list(
@@ -476,7 +506,7 @@ Program<- R6Class("Program",
 		},
 
 		print = function() {
-		
+			print(self$toString())
 		},
 
 		isInit = function() {
@@ -510,9 +540,9 @@ Program<- R6Class("Program",
 		Sync = function() {}
 
 )
-}
 
-{ # District Term
+
+ # District Term
 DTerm <- R6Class("DTerm",
 
 	private = list(
@@ -563,7 +593,7 @@ DTerm <- R6Class("DTerm",
 		},
 
 		print = function() {
-		
+			print(self$toString())
 		},
 
 		isInit = function() {
@@ -596,9 +626,9 @@ DTerm <- R6Class("DTerm",
 
 		Sync = function() {}
 )
-}
 
-{ # Class/Roster
+
+ # Class/Roster
 #Called "Roster" to avoid confusion between an academic class and R6 class
 Roster <- R6Class("Roster",
 
@@ -685,7 +715,7 @@ Roster <- R6Class("Roster",
 		},
 
 		print = function() {
-		
+			print(self$toString())
 		},
 
 		isInit = function() {
@@ -719,9 +749,9 @@ Roster <- R6Class("Roster",
 		Sync = function() {}
 	)
 )
-}
 
-{ # Test 
+
+ # Test 
 TestGen <- R6Class("TestGen",
 
 	private = list(
@@ -756,7 +786,7 @@ TestGen <- R6Class("TestGen",
 		},
 
 		print = function() {
-		
+			print(self$toString())
 		},
 
 		isInit = function() {
@@ -771,9 +801,9 @@ TestGen <- R6Class("TestGen",
 		Delete = function() {},
 		Sync = function() {}
 )
-}
 
-{ # Test Assignment
+
+ # Test Assignment
 TestAssign <- R6Class("TestAssign",
 
 	private = list(
@@ -812,7 +842,7 @@ TestAssign <- R6Class("TestAssign",
 		},
 
 		print = function() {
-		
+			print(self$toString())
 		},
 
 		isInit = function() {
@@ -827,9 +857,9 @@ TestAssign <- R6Class("TestAssign",
 		Delete = function() {},
 		Sync = function() {}
 )
-}
 
-{ # Test Result
+
+ # Test Result
 TestResult <- R6Class("TestResult",
 
 	private = list(
@@ -868,7 +898,7 @@ TestResult <- R6Class("TestResult",
 		},
 
 		print = function() {
-		
+			print(self$toString())
 		},
 
 		isInit = function() {
@@ -883,14 +913,14 @@ TestResult <- R6Class("TestResult",
 		Delete = function() {},
 		Sync = function() {}
 )
-}
 
-{ # Test-Taker Pass-through ****
+
+ # Test-Taker Pass-through ****
 TestTaker <- R6Class("TestTaker",
 )
-}
 
-{ # LinkIt! Portal Pass-through
+
+ # LinkIt! Portal Pass-through
 Portal <- R6Class("Portal",
 
 	private = list(
@@ -913,9 +943,9 @@ Portal <- R6Class("Portal",
 	),
 
 )
-}
 
-{ # Online Review and Manual Grading Pass-through
+
+ # Online Review and Manual Grading Pass-through
 ReviewGrading <- R6Class("ReviewGrading",
 
 	private = list(
@@ -938,9 +968,9 @@ ReviewGrading <- R6Class("ReviewGrading",
 	),
 
 )
-}
 
-{ # Icon/Tab Authorization by School and Role
+
+ # Icon/Tab Authorization by School and Role
 IconTabAuth <- R6Class("IconTabAuth",
 
 	private = list(
@@ -963,9 +993,9 @@ IconTabAuth <- R6Class("IconTabAuth",
 	),
 
 )
-}
 
-{ # Function Authorization by School and Role
+
+ # Function Authorization by School and Role
 FunctionAuth <- R6("FunctionAuth"
 
 	private = list(
@@ -988,9 +1018,9 @@ FunctionAuth <- R6("FunctionAuth"
 	),
 
 )
-}
 
-{ # Generate and Retrieve ACT/SAT Student Reports 
+
+ # Generate and Retrieve ACT/SAT Student Reports 
 SATACTGen <- R6Class("SATACTGen"
 
 	private = list(
@@ -1013,4 +1043,4 @@ SATACTGen <- R6Class("SATACTGen"
 	),
 
 )
-}
+
