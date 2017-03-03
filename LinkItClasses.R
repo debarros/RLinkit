@@ -5,26 +5,28 @@
 # R 3.2.1?
 
 
-#
-#	Object name						Status
-#	School							CRUD
-#	Staff							CRUD
-#	Student							CRUD
-#	Program							CRUD
-#	District Term					CRUD
-#	Class/Roster					CRUD
-#	Test							 R
-#	Test Assignment					CRU
-#	Test Result						CR
-#	Test-Taker Pass-through			C
-#	Portal	Pass-through			C
-#	OR and MG Pass-through			C
-#	Icon/Tab Authorization			CRUD
-#	Function Authorization			
-#	Generate and Retrieve Reports	
+# Object Status Table ####
+
+#	Object name						        |   Status
+# - - - - - - - - - - - - - - - - - - - - -
+#	School							          |    CRUD
+#	Staff							            |    CRUD
+#	Student							          |    CRUD
+#	Program							          |    CRUD
+#	District Term					        |    CRUD
+#	Class/Roster					        |    CRUD
+#	Test							            |     R
+#	Test Assignment					      |    CRU
+#	Test Result						        |    CR
+#	Test-Taker Pass-through		    |	   C
+#	Portal	Pass-through			    |    C
+#	OR and MG Pass-through		    |	   C
+#	Icon/Tab Authorization		    |	   CRUD
+#	Function Authorization		    |	
+#	Generate and Retrieve Reports	|
 #
 
-
+# Load Libraries ####
 library("XML")
 library("RCurl")
 library("digest")
@@ -32,6 +34,7 @@ library("R6")
 
 source("LinkItURL.R")
 
+# Define Classes ####
 { # School
 School <- R6Class("School",
 
@@ -111,7 +114,7 @@ School <- R6Class("School",
 				"Created in LinkIt!:\t", private$CreatedDate, "\n\t",
 				"Last Modified in LinkIt!:\t", private$ModifiedDate, "\n",
 				"---")
-			return ret
+			return(ret)
 		}
 		
 		print = function() {
@@ -123,7 +126,7 @@ School <- R6Class("School",
 		#
 		
 		isInit = function() {
-			return private$init
+			return(private$init)
 		},
 		
 		XMLinit = function(xml) {
@@ -182,19 +185,19 @@ Staff <- R6Class("Staff",
 	
 	public = list(
 		initialize = function(UserId, Role,	UserName, FirstName, LastName, PhoneNumber, LocalCode, StateCode, Status, SchoolID, EmailAddress, ModifiedDate, CreatedDate) {
-			private$UserId <- UserId,
-			private$Role <- Role,
-			private$UserName <- UserName,
-			private$FirstName <- FirstName,
-			private$LastName <- LastName,
-			private$PhoneNumber <- PhoneNumber,
-			private$LocalCode <- LocalCode,
-			private$StateCode <- StateCode,
-			private$Status <- Status,
-			private$SchoolID <- SchoolID,
-			private$EmailAddress <- EmailAddress,
-			private$ModifiedDate <- ModifiedDate,
-			private$CreatedDate <- CreatedDate,
+			private$UserId <- UserId
+			private$Role <- Role
+			private$UserName <- UserName
+			private$FirstName <- FirstName
+			private$LastName <- LastName
+			private$PhoneNumber <- PhoneNumber
+			private$LocalCode <- LocalCode
+			private$StateCode <- StateCode
+			private$Status <- Status
+			private$SchoolID <- SchoolID
+			private$EmailAddress <- EmailAddress
+			private$ModifiedDate <- ModifiedDate
+			private$CreatedDate <- CreatedDate
 			private$isInit <- TRUE
 		},	
 		
@@ -257,17 +260,17 @@ Staff <- R6Class("Staff",
 				"Status:\t", Status, "\n\t",
 				"Username and ID:\t", UserName, ", ", UserId, "\n\t",
 				"Role:\t", Role, "\n\t",
-				"Account created:\t", CreatedDate, "\n\t"
+				"Account created:\t", CreatedDate, "\n\t",
 				"Account last modified:\t", ModifiedDate)
-			return ret
+			return(ret)
 		},
 		
 		print = function() {
-			print(self$toString()
+			print(self$toString())
 		},
 	
 		isInit = function() {
-			return private$init
+			return(private$init)
 		},
 		
 		XMLinit = function(xml) {
