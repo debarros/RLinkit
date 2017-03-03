@@ -1,4 +1,5 @@
-#-------------------------------------------------------------------------------------------------#
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -#
+# Header                                                                                          ####
 # Test version of R6 wrappers for LinkIt! REST API                                                #
 # Go to https://linkit.atlassian.net/wiki/display/LRA/LinkIt!+REST+API#suk= for more information  #
 # LinkItClasses.R                                                                                 #
@@ -12,7 +13,7 @@
 #    No CRUD Methods have been implemented, since the URL builder does not exist yet              #
 #                                                                                                 #
 # This project is available at https://github.com/abthornejr/RLinkIt                              #
-#-------------------------------------------------------------------------------------------------#
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -#
 
 
 # Object Available Methods Table ####
@@ -47,11 +48,11 @@ source("LinkItURL.R")
 
 # Define Classes ####
 
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# School               #
+# School               ####
 #                      #
-#----------------------#
+#- - - - - - - - - - - #
 School <- R6Class("School",
 
 	# Private variables
@@ -129,7 +130,7 @@ School <- R6Class("School",
 				"Status:\t", private$Status, "\n\t",
 				"Created in LinkIt!:\t", private$CreatedDate, "\n\t",
 				"Last Modified in LinkIt!:\t", private$ModifiedDate, "\n",
-				"---")
+				"- -")
 			return(ret)
 		}
 		
@@ -177,11 +178,11 @@ School <- R6Class("School",
 ) # School
 
 
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# Staff                #
+# Staff                ####
 #                      #
-#----------------------#
+#- - - - - - - - - - - #
 Staff <- R6Class("Staff",
 
 	# Private variables
@@ -332,11 +333,11 @@ Staff <- R6Class("Staff",
 )
 # Staff
 
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# Student              #
+# Student              ####
 #                      #
-#----------------------#
+#- - - - - - - - - - - #
 Student<- R6Class("Student",
 
 	private = list(
@@ -496,19 +497,15 @@ Student<- R6Class("Student",
 
 		Sync = function() {}
 
-<<<<<<< HEAD
-	)
-=======
 	) # public
->>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 ) # Student
 
 
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# Program              #
+# Program              ####
 #                      #
-#----------------------#
+#- - - - - - - - - - - #
 Program<- R6Class("Program",
 
 	private = list(
@@ -605,20 +602,14 @@ Program<- R6Class("Program",
 		},
 
 		Sync = function() {}
-<<<<<<< HEAD
-
-) # Program
-=======
 		) #public
 ) #program
->>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 
-
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# District Term        #
+# District Term        ####
 #                      #
-#----------------------#
+#- - - - - - - - - - - #
 DTerm <- R6Class("DTerm",
 
 	private = list(
@@ -725,19 +716,14 @@ DTerm <- R6Class("DTerm",
 		},
 
 		Sync = function() {}
-<<<<<<< HEAD
-) # District Term
-=======
   ) # public
 ) # DTerm
->>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 
-
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# Class/Roster         #
+# Class/Roster         ####
 #                      #
-#----------------------#
+#- - - - - - - - - - - #
 #Called "Roster" to avoid confusion between an academic class and R6 class
 Roster <- R6Class("Roster",
 
@@ -884,11 +870,11 @@ Roster <- R6Class("Roster",
 ) # Roster
 
 
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# Test                 #
+# Test                 ####
 #                      #
-#----------------------# 
+#- - - - - - - - - - - # 
 TestGen <- R6Class("TestGen",
 
 	private = list(
@@ -934,21 +920,10 @@ TestGen <- R6Class("TestGen",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE},
-	
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	
-	
+
 		#
 		# special use functions
 		#
-=======
->>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -975,11 +950,11 @@ TestGen <- R6Class("TestGen",
 ) # TestGen
 
 
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# Test Assignment      #
+# Test Assignment      ####
 #                      #
-#----------------------#
+#- - - - - - - - - - - #
 TestAssign <- R6Class("TestAssign",
 
 	private = list(
@@ -1007,20 +982,10 @@ TestAssign <- R6Class("TestAssign",
 		# Basic, generic functions
 		#	
 		initialize = function() {},
-	
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	
+
 		#
 		# special use functions
 		#
-=======
->>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -1043,19 +1008,14 @@ TestAssign <- R6Class("TestAssign",
 		Update = function() {},
 		Delete = function() {},
 		Sync = function() {}
-) # public
+  ) # public
 ) # TestAssign
 
-
-<<<<<<< HEAD
-#----------------------#
+#- - - - - - - - - - - #
 #                      #
-# Test Result          #
+# Test Result          ####
 #                      #
-#----------------------#
-=======
-# Test Result
->>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
+#- - - - - - - - - - - #
 TestResult <- R6Class("TestResult",
 
 	private = list(
@@ -1083,21 +1043,10 @@ TestResult <- R6Class("TestResult",
 		# Basic, generic functions
 		#
 		initialize = function() {},
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	
-	
+
 		#
 		# special use functions
 		#
-=======
-
->>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -1107,7 +1056,7 @@ TestResult <- R6Class("TestResult",
 		},
 
 		isInit = function() {
-			return private$init
+			return(private$init)
 		},
 		
 		XMLinit = function() {},
@@ -1120,13 +1069,13 @@ TestResult <- R6Class("TestResult",
 		Update = function() {},
 		Delete = function() {},
 		Sync = function() {}
-) # public
+  ) # public
 ) # TestResult
 
 
- # Test-Taker Pass-through ****
+ # Test-Taker Pass-through **** ####
 TestTaker <- R6Class("TestTaker"
-                     # should there be private and public lists here?
+      # should there be private and public lists here?
 ) # TestTaker
 
 
@@ -1157,7 +1106,7 @@ Portal <- R6Class("Portal",
 )#Portal
 
 
- # Online Review and Manual Grading Pass-through
+ # Online Review and Manual Grading Pass-through ####
 ReviewGrading <- R6Class("ReviewGrading",
 
 	private = list(
@@ -1183,7 +1132,7 @@ ReviewGrading <- R6Class("ReviewGrading",
 ) # ReviewGrading
 
 
- # Icon/Tab Authorization by School and Role
+ # Icon/Tab Authorization by School and Role ####
 IconTabAuth <- R6Class("IconTabAuth",
 
 	private = list(
@@ -1209,7 +1158,7 @@ IconTabAuth <- R6Class("IconTabAuth",
 ) # IconTabAuth
 
 
- # Function Authorization by School and Role
+ # Function Authorization by School and Role ####
 FunctionAuth <- R6("FunctionAuth",
 
 	private = list(
@@ -1235,7 +1184,7 @@ FunctionAuth <- R6("FunctionAuth",
 ) #FunctionAuth
 
 
- # Generate and Retrieve ACT/SAT Student Reports 
+ # Generate and Retrieve ACT/SAT Student Reports ####
 SATACTGen <- R6Class("SATACTGen",
 
 	private = list(
