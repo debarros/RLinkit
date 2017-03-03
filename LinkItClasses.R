@@ -34,8 +34,7 @@ library("R6")
 
 source("LinkItURL.R")
 
-# Define Classes ####
-{ # School
+# Define Classes #### # School
 School <- R6Class("School",
 
 	# Private variables
@@ -157,10 +156,8 @@ School <- R6Class("School",
 		# synchronizes School object to match LinkIt! data for identical SchoolID.
 		}
 	) # public
-) # School
-}
-
-{ # Staff
+) # School
+ # Staff
 Staff <- R6Class("Staff",
 
 	# Private variables
@@ -299,10 +296,8 @@ Staff <- R6Class("Staff",
 
 		Sync = function() {}
 	)	
-)
-} # Staff
-
-{ # Student 
+)# Staff
+ # Student 
 Student<- R6Class("Student",
 
 	private = list(
@@ -427,10 +422,8 @@ Student<- R6Class("Student",
 		Sync = function() {}
 
 	)
-)
-}
-
-{ # Program
+)
+ # Program
 Program<- R6Class("Program",
 
 	private = list(
@@ -509,10 +502,8 @@ Program<- R6Class("Program",
 
 		Sync = function() {}
 
-)
-}
-
-{ # District Term
+)
+ # District Term
 DTerm <- R6Class("DTerm",
 
 	private = list(
@@ -595,10 +586,8 @@ DTerm <- R6Class("DTerm",
 		},
 
 		Sync = function() {}
-)
-}
-
-{ # Class/Roster
+)
+ # Class/Roster
 #Called "Roster" to avoid confusion between an academic class and R6 class
 Roster <- R6Class("Roster",
 
@@ -718,10 +707,8 @@ Roster <- R6Class("Roster",
 
 		Sync = function() {}
 	)
-)
-}
-
-{ # Test 
+)
+ # Test 
 TestGen <- R6Class("TestGen",
 
 	private = list(
@@ -770,10 +757,8 @@ TestGen <- R6Class("TestGen",
 		Update = function() {},
 		Delete = function() {},
 		Sync = function() {}
-)
-}
-
-{ # Test Assignment
+)
+ # Test Assignment
 TestAssign <- R6Class("TestAssign",
 
 	private = list(
@@ -826,10 +811,8 @@ TestAssign <- R6Class("TestAssign",
 		Update = function() {},
 		Delete = function() {},
 		Sync = function() {}
-)
-}
-
-{ # Test Result
+)
+ # Test Result
 TestResult <- R6Class("TestResult",
 
 	private = list(
@@ -882,15 +865,11 @@ TestResult <- R6Class("TestResult",
 		Update = function() {},
 		Delete = function() {},
 		Sync = function() {}
-)
-}
-
-{ # Test-Taker Pass-through ****
+)
+ # Test-Taker Pass-through ****
 TestTaker <- R6Class("TestTaker",
-)
-}
-
-{ # LinkIt! Portal Pass-through
+)
+ # LinkIt! Portal Pass-through
 Portal <- R6Class("Portal",
 
 	private = list(
@@ -912,10 +891,8 @@ Portal <- R6Class("Portal",
 		init = FALSE
 	),
 
-)
-}
-
-{ # Online Review and Manual Grading Pass-through
+)
+ # Online Review and Manual Grading Pass-through
 ReviewGrading <- R6Class("ReviewGrading",
 
 	private = list(
@@ -937,10 +914,8 @@ ReviewGrading <- R6Class("ReviewGrading",
 		init = FALSE
 	),
 
-)
-}
-
-{ # Icon/Tab Authorization by School and Role
+)
+ # Icon/Tab Authorization by School and Role
 IconTabAuth <- R6Class("IconTabAuth",
 
 	private = list(
@@ -962,10 +937,8 @@ IconTabAuth <- R6Class("IconTabAuth",
 		init = FALSE
 	),
 
-)
-}
-
-{ # Function Authorization by School and Role
+)
+ # Function Authorization by School and Role
 FunctionAuth <- R6("FunctionAuth"
 
 	private = list(
@@ -987,10 +960,8 @@ FunctionAuth <- R6("FunctionAuth"
 		init = FALSE
 	),
 
-)
-}
-
-{ # Generate and Retrieve ACT/SAT Student Reports 
+)
+ # Generate and Retrieve ACT/SAT Student Reports 
 SATACTGen <- R6Class("SATACTGen"
 
 	private = list(
@@ -1012,5 +983,4 @@ SATACTGen <- R6Class("SATACTGen"
 		init = FALSE
 	),
 
-)
-}
+)
