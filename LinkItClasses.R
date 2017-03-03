@@ -1,12 +1,18 @@
-# Test version of HTTP request builder for RLinkIt!
-# LinkIt! REST API wrapper
-# Refer to https://linkit.atlassian.net/wiki/display/LRA/LinkIt!+REST+API#suk= for more information
-# LinkItClasses.R
-# R 3.2.1?
-#
-# Alan B. Thorne, Jr.
-# Paul de Barros
-#
+#-------------------------------------------------------------------------------------------------#
+# Test version of R6 wrappers for LinkIt! REST API                                                #
+# Go to https://linkit.atlassian.net/wiki/display/LRA/LinkIt!+REST+API#suk= for more information  #
+# LinkItClasses.R                                                                                 #
+# R 3.2.1?                                                                                        #
+#                                                                                                 #
+# Authors:                                                                                        #
+# Alan B. Thorne, Jr.                                                                             #
+# Paul de Barros                                                                                  #
+#                                                                                                 #
+# Current Status:                                                                                 #
+#    No CRUD Methods have been implemented, since the URL builder does not exist yet              #
+#                                                                                                 #
+# This project is available at https://github.com/abthornejr/RLinkIt                              #
+#-------------------------------------------------------------------------------------------------#
 
 
 # Object Available Methods Table ####
@@ -37,15 +43,20 @@ library("digest")
 library("R6")
 
 source("LinkItURL.R")
+# This file does not exist yet.
 
 # Define Classes ####
- # School
+
+#----------------------#
+#                      #
+# School               #
+#                      #
+#----------------------#
 School <- R6Class("School",
 
 	# Private variables
 	# Variable names correspond directly to names in LinkIt API
-	
-	private = list(
+		private = list(
 		SchoolID = NULL,
 		Name = NULL,
 		LocalCode = NULL,
@@ -78,6 +89,7 @@ School <- R6Class("School",
 			private$init <- TRUE
 		},
 		
+		#The following functions assign the argument to the appropriate private variable
 		setSchoolID = function(id) {
 			private$SchoolID <- id
 		},
@@ -128,7 +140,6 @@ School <- R6Class("School",
 		#
 		# special use functions
 		#
-		
 		isInit = function() {
 			return(private$init)
 		},
@@ -141,7 +152,9 @@ School <- R6Class("School",
 		# initialize from JSON result from LinkIt!
 		},
 		
+		#
 		# CRUD methods
+		#
 		Create = function() {
 		},
 		
@@ -164,12 +177,15 @@ School <- R6Class("School",
 ) # School
 
 
- # Staff
+#----------------------#
+#                      #
+# Staff                #
+#                      #
+#----------------------#
 Staff <- R6Class("Staff",
 
 	# Private variables
 	# Variable names correspond directly to names in LinkIt API
-	
 	private = list(
 		UserId = NULL,
 		Role = NULL,
@@ -188,6 +204,9 @@ Staff <- R6Class("Staff",
 	), # private
 	
 	public = list(
+		#
+		# Basic, generic functions
+		#
 		initialize = function(UserId, Role,	UserName, FirstName, LastName, PhoneNumber, LocalCode, StateCode, Status, SchoolID, EmailAddress, ModifiedDate, CreatedDate) {
 			private$UserId <- UserId
 			private$Role <- Role
@@ -202,9 +221,10 @@ Staff <- R6Class("Staff",
 			private$EmailAddress <- EmailAddress
 			private$ModifiedDate <- ModifiedDate
 			private$CreatedDate <- CreatedDate
-			private$isInit <- TRUE
+			private$init <- TRUE
 		},	
 		
+		#The following functions assign the argument to the appropriate private variable
 		setUserId = function(UserId) {
 			private$UserId <- UserId
 		},
@@ -257,6 +277,9 @@ Staff <- R6Class("Staff",
 			private$CreatedDate = CreatedDate
 		},
 		
+		#
+		# special use functions
+		#
 		toString = function() {
 			ret <- cat(private$LastName, ", ", private$FirstName, "\n\t",
 				"e-mail address:\t", private$EmailAddress, "\n\t",
@@ -285,6 +308,9 @@ Staff <- R6Class("Staff",
 		# initialize from JSON result from LinkIt!
 		},
 
+		#
+		# CRUD methods
+		#
 		Create = function() {
 			#fill this in!!!
 		},
@@ -302,10 +328,15 @@ Staff <- R6Class("Staff",
 		},
 
 		Sync = function() {}
-	)	# public
-) # Staff
+	)	
+)
+# Staff
 
- # Student 
+#----------------------#
+#                      #
+# Student              #
+#                      #
+#----------------------#
 Student<- R6Class("Student",
 
 	private = list(
@@ -325,13 +356,14 @@ Student<- R6Class("Student",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	), # private
+	),
 	
 	public = list (
 	
-		initialize = function(StudentID, FirstName, MiddleName, LastName, Gender, 
-		                      Race, DateOfBirth, LocalCode, StateCode, Status, 
-		                      SISID, Grade, AdminSchoolID, CreatedDate, ModifiedDate) {
+		#
+		# Basic, generic functions
+		#
+		initialize = function(StudentID, FirstName, MiddleName, LastName, Gender, Race, DateOfBirth, LocalCode, StateCode, Status, SISID, Grade, AdminSchoolID, CreatedDate, ModifiedDate) {
 		private$StudentID <- StudentID
 		private$FirstName <- FirstName
 		private$MiddleName <- MiddleName
@@ -350,6 +382,7 @@ Student<- R6Class("Student",
 		private.isInit = TRUE
 		},
 		
+		#The following functions assign the argument to the appropriate private variable
 		setStudentID = function(StudentID) {
 			private$StudentID <- StudentID
 		},
@@ -410,6 +443,9 @@ Student<- R6Class("Student",
 			private$ModifiedDate <- mdate
 		},
 
+		#
+		# special use functions
+		#
 		toString = function() {
 			ret <- cat(private$LastName, ", ", private$FirstName, " ", private$MiddleName, "\n\t",
 				"ID, Grade:\t", private$StudentID, ", ", private$Grade, "th grade\n\t",
@@ -439,6 +475,9 @@ Student<- R6Class("Student",
 		# initialize from JSON result from LinkIt!
 		},
 
+		#
+		# CRUD methods
+		#
 		Create = function() {
 			#fill this in!!!
 		},
@@ -457,11 +496,19 @@ Student<- R6Class("Student",
 
 		Sync = function() {}
 
+<<<<<<< HEAD
+	)
+=======
 	) # public
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 ) # Student
 
 
- # Program
+#----------------------#
+#                      #
+# Program              #
+#                      #
+#----------------------#
 Program<- R6Class("Program",
 
 	private = list(
@@ -476,8 +523,21 @@ Program<- R6Class("Program",
 	
 	public = list (
 	
-		initialize = function() {},	
+		initialize = function(ProgramID = NULL,
+		Name = NULL,
+		Code = NULL,
+		AccessLevel = NULL,
+		CreatedDate = NULL,
+		ModifiedDate = NULL,
+		init = FALSE) {ProgramID = NULL,
+		Name = NULL,
+		Code = NULL,
+		AccessLevel = NULL,
+		CreatedDate = NULL,
+		ModifiedDate = NULL,
+		init = FALSE},	
 
+		#The following functions assign the argument to the appropriate private variable
 		setProgramID = function(ProgramID) {
 			private$ProgramID <- ProgramID
 		},
@@ -502,6 +562,9 @@ Program<- R6Class("Program",
 			private$ModifiedDate <- mdate
 		},
 		
+		#
+		# special use functions
+		#
 		toString = function() {
 		
 		},
@@ -522,6 +585,9 @@ Program<- R6Class("Program",
 		# initialize from JSON result from LinkIt!
 		},
 
+		#
+		# CRUD methods
+		#
 		Create = function() {
 			#fill this in!!!
 		},
@@ -539,11 +605,20 @@ Program<- R6Class("Program",
 		},
 
 		Sync = function() {}
+<<<<<<< HEAD
+
+) # Program
+=======
 		) #public
 ) #program
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 
 
- # District Term
+#----------------------#
+#                      #
+# District Term        #
+#                      #
+#----------------------#
 DTerm <- R6Class("DTerm",
 
 	private = list(
@@ -559,8 +634,26 @@ DTerm <- R6Class("DTerm",
 	
 	public = list (
 	
-		initialize = function() {},
-	
+		#
+		# Basic, generic functions
+		#
+		initialize = function(DistrictTermID = NULL,
+		Name = NULL,
+		Code = NULL,
+		DateStart = NULL,
+		DateEnd = NULL,
+		CreatedDate = NULL,
+		ModifiedDate = NULL,
+		init = FALSE) {DistrictTermID = NULL,
+		Name = NULL,
+		Code = NULL,
+		DateStart = NULL,
+		DateEnd = NULL,
+		CreatedDate = NULL,
+		ModifiedDate = NULL,
+		init = FALSE},
+		
+		#The following functions assign the argument to the appropriate private variable
 		setDistrictTermID = function(DistrictTermID) {
 			private$DistrictTermID <- DistrictTermID
 		},
@@ -589,6 +682,9 @@ DTerm <- R6Class("DTerm",
 			private$ModifiedDate <- mdate
 		},
 	
+		#
+		# special use functions
+		#
 		toString = function() {
 		
 		},
@@ -609,6 +705,9 @@ DTerm <- R6Class("DTerm",
 		# initialize from JSON result from LinkIt!
 		},
 
+		#
+		# CRUD methods
+		#
 		Create = function() {
 			#fill this in!!!
 		},
@@ -626,11 +725,19 @@ DTerm <- R6Class("DTerm",
 		},
 
 		Sync = function() {}
+<<<<<<< HEAD
+) # District Term
+=======
   ) # public
 ) # DTerm
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 
 
- # Class/Roster
+#----------------------#
+#                      #
+# Class/Roster         #
+#                      #
+#----------------------#
 #Called "Roster" to avoid confusion between an academic class and R6 class
 Roster <- R6Class("Roster",
 
@@ -653,9 +760,27 @@ Roster <- R6Class("Roster",
 	), #private
 	
 	public = list (
+		
+		#
+		# Basic, generic functions
+		#
+		initialize = function(DistrictTermID = NULL,
+		Name = NULL,
+		Code = NULL,
+		DateStart = NULL,
+		DateEnd = NULL,
+		CreatedDate = NULL,
+		ModifiedDate = NULL,
+		init = FALSE) {DistrictTermID = NULL,
+		Name = NULL,
+		Code = NULL,
+		DateStart = NULL,
+		DateEnd = NULL,
+		CreatedDate = NULL,
+		ModifiedDate = NULL,
+		init = FALSE},
 	
-		initialize = function() {},
-	
+		#The following functions assign the argument to the appropriate private variable
 		setClassID = function(ClassID) {
 			private$ClassID <- ClassID
 		},
@@ -712,6 +837,9 @@ Roster <- R6Class("Roster",
 			private$ModifiedDate <- mdate
 		},
 	
+		#
+		# special use functions
+		#
 		toString = function() {
 		
 		},
@@ -732,6 +860,9 @@ Roster <- R6Class("Roster",
 		# initialize from JSON result from LinkIt!
 		},
 
+		#
+		# CRUD methods
+		#
 		Create = function() {
 			#fill this in!!!
 		},
@@ -753,7 +884,11 @@ Roster <- R6Class("Roster",
 ) # Roster
 
 
- # Test 
+#----------------------#
+#                      #
+# Test                 #
+#                      #
+#----------------------# 
 TestGen <- R6Class("TestGen",
 
 	private = list(
@@ -772,9 +907,48 @@ TestGen <- R6Class("TestGen",
 	), # private
 	
 	public = list (
+		
+		#
+		# Basic, generic functions
+		#
+		initialize = function(TestID = NULL,
+		TestName = NULL,
+		BankID = NULL,
+		BankName = NULL,
+		Subject	= NULL,
+		Grade = NULL,
+		AuthorID = NULL,
+		AuthorFirstName = NULL,
+		AuthorLastName = NULL,
+		CreatedDate = NULL,
+		ModifiedDate = NULL,
+		init = FALSE) {TestID = NULL,
+		TestName = NULL,
+		BankID = NULL,
+		BankName = NULL,
+		Subject	= NULL,
+		Grade = NULL,
+		AuthorID = NULL,
+		AuthorFirstName = NULL,
+		AuthorLastName = NULL,
+		CreatedDate = NULL,
+		ModifiedDate = NULL,
+		init = FALSE},
 	
-		initialize = function() {},
+<<<<<<< HEAD
 	
+	
+	
+	
+	
+	
+	
+	
+		#
+		# special use functions
+		#
+=======
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -789,6 +963,9 @@ TestGen <- R6Class("TestGen",
 		
 		XMLinit = function() {},
 		JSONinit = function() {},
+		#
+		# CRUD methods
+		#
 		Create = function() {},
 		Read = function() {},
 		Update = function() {},
@@ -798,7 +975,11 @@ TestGen <- R6Class("TestGen",
 ) # TestGen
 
 
- # Test Assignment
+#----------------------#
+#                      #
+# Test Assignment      #
+#                      #
+#----------------------#
 TestAssign <- R6Class("TestAssign",
 
 	private = list(
@@ -822,8 +1003,24 @@ TestAssign <- R6Class("TestAssign",
 	
 	public = list (
 	
+		#
+		# Basic, generic functions
+		#	
 		initialize = function() {},
 	
+<<<<<<< HEAD
+	
+	
+	
+	
+	
+	
+	
+		#
+		# special use functions
+		#
+=======
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -838,6 +1035,9 @@ TestAssign <- R6Class("TestAssign",
 		
 		XMLinit = function() {},
 		JSONinit = function() {},
+		#
+		# CRUD methods
+		#
 		Create = function() {},
 		Read = function() {},
 		Update = function() {},
@@ -847,7 +1047,15 @@ TestAssign <- R6Class("TestAssign",
 ) # TestAssign
 
 
+<<<<<<< HEAD
+#----------------------#
+#                      #
+# Test Result          #
+#                      #
+#----------------------#
+=======
 # Test Result
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 TestResult <- R6Class("TestResult",
 
 	private = list(
@@ -871,8 +1079,25 @@ TestResult <- R6Class("TestResult",
 	
 	public = list (
 	
+		#
+		# Basic, generic functions
+		#
 		initialize = function() {},
+<<<<<<< HEAD
+	
+	
+	
+	
+	
+	
+	
+	
+		#
+		# special use functions
+		#
+=======
 
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -887,6 +1112,9 @@ TestResult <- R6Class("TestResult",
 		
 		XMLinit = function() {},
 		JSONinit = function() {},
+		#
+		# CRUD methods
+		#
 		Create = function() {},
 		Read = function() {},
 		Update = function() {},
