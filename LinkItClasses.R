@@ -464,7 +464,7 @@ Student<- R6Class("Student",
 		},
 
 		isInit = function() {
-			return private$init
+			return(private$init)
 		},
 		
 		XMLinit = function(xml) {
@@ -496,7 +496,11 @@ Student<- R6Class("Student",
 
 		Sync = function() {}
 
+<<<<<<< HEAD
 	)
+=======
+	) # public
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 ) # Student
 
 
@@ -515,7 +519,7 @@ Program<- R6Class("Program",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	), #private
 	
 	public = list (
 	
@@ -570,7 +574,7 @@ Program<- R6Class("Program",
 		},
 
 		isInit = function() {
-			return private$init
+			return(private$init)
 		},
 		
 		XMLinit = function(xml) {
@@ -601,8 +605,13 @@ Program<- R6Class("Program",
 		},
 
 		Sync = function() {}
+<<<<<<< HEAD
 
 ) # Program
+=======
+		) #public
+) #program
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 
 
 #----------------------#
@@ -621,7 +630,7 @@ DTerm <- R6Class("DTerm",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	), #private
 	
 	public = list (
 	
@@ -685,7 +694,7 @@ DTerm <- R6Class("DTerm",
 		},
 
 		isInit = function() {
-			return private$init
+			return (private$init)
 		},
 		
 		XMLinit = function(xml) {
@@ -716,7 +725,12 @@ DTerm <- R6Class("DTerm",
 		},
 
 		Sync = function() {}
+<<<<<<< HEAD
 ) # District Term
+=======
+  ) # public
+) # DTerm
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 
 
 #----------------------#
@@ -743,7 +757,7 @@ Roster <- R6Class("Roster",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	), #private
 	
 	public = list (
 		
@@ -835,7 +849,7 @@ Roster <- R6Class("Roster",
 		},
 
 		isInit = function() {
-			return private$init
+			return(private$init)
 		},
 		
 		XMLinit = function(xml) {
@@ -866,8 +880,8 @@ Roster <- R6Class("Roster",
 		},
 
 		Sync = function() {}
-	)
-)
+	) # public
+) # Roster
 
 
 #----------------------#
@@ -890,7 +904,7 @@ TestGen <- R6Class("TestGen",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	), # private
 	
 	public = list (
 		
@@ -921,6 +935,7 @@ TestGen <- R6Class("TestGen",
 		ModifiedDate = NULL,
 		init = FALSE},
 	
+<<<<<<< HEAD
 	
 	
 	
@@ -932,6 +947,8 @@ TestGen <- R6Class("TestGen",
 		#
 		# special use functions
 		#
+=======
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -941,7 +958,7 @@ TestGen <- R6Class("TestGen",
 		},
 
 		isInit = function() {
-			return private$init
+			return(private$init)
 		},
 		
 		XMLinit = function() {},
@@ -954,7 +971,8 @@ TestGen <- R6Class("TestGen",
 		Update = function() {},
 		Delete = function() {},
 		Sync = function() {}
-)
+  ) # public
+) # TestGen
 
 
 #----------------------#
@@ -981,7 +999,7 @@ TestAssign <- R6Class("TestAssign",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	), # private
 	
 	public = list (
 	
@@ -990,6 +1008,7 @@ TestAssign <- R6Class("TestAssign",
 		#	
 		initialize = function() {},
 	
+<<<<<<< HEAD
 	
 	
 	
@@ -1000,6 +1019,8 @@ TestAssign <- R6Class("TestAssign",
 		#
 		# special use functions
 		#
+=======
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -1009,7 +1030,7 @@ TestAssign <- R6Class("TestAssign",
 		},
 
 		isInit = function() {
-			return private$init
+			return(private$init)
 		},
 		
 		XMLinit = function() {},
@@ -1022,14 +1043,19 @@ TestAssign <- R6Class("TestAssign",
 		Update = function() {},
 		Delete = function() {},
 		Sync = function() {}
-)
+) # public
+) # TestAssign
 
 
+<<<<<<< HEAD
 #----------------------#
 #                      #
 # Test Result          #
 #                      #
 #----------------------#
+=======
+# Test Result
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 TestResult <- R6Class("TestResult",
 
 	private = list(
@@ -1049,7 +1075,7 @@ TestResult <- R6Class("TestResult",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	), # private
 	
 	public = list (
 	
@@ -1057,6 +1083,7 @@ TestResult <- R6Class("TestResult",
 		# Basic, generic functions
 		#
 		initialize = function() {},
+<<<<<<< HEAD
 	
 	
 	
@@ -1068,6 +1095,9 @@ TestResult <- R6Class("TestResult",
 		#
 		# special use functions
 		#
+=======
+
+>>>>>>> 8258a73da85a48c732dbdb6a21a6fd01b516efda
 		toString = function() {
 		
 		},
@@ -1090,12 +1120,14 @@ TestResult <- R6Class("TestResult",
 		Update = function() {},
 		Delete = function() {},
 		Sync = function() {}
-)
+) # public
+) # TestResult
 
 
  # Test-Taker Pass-through ****
-TestTaker <- R6Class("TestTaker",
-)
+TestTaker <- R6Class("TestTaker"
+                     # should there be private and public lists here?
+) # TestTaker
 
 
  # LinkIt! Portal Pass-through
@@ -1118,9 +1150,11 @@ Portal <- R6Class("Portal",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	) # private
+	
+	#shoudl there be a public list here?
 
-)
+)#Portal
 
 
  # Online Review and Manual Grading Pass-through
@@ -1143,9 +1177,10 @@ ReviewGrading <- R6Class("ReviewGrading",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	) #ReviewGrading
+	#should there be a public list here?
 
-)
+) # ReviewGrading
 
 
  # Icon/Tab Authorization by School and Role
@@ -1168,13 +1203,14 @@ IconTabAuth <- R6Class("IconTabAuth",
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	) # private
+	#should there be a public list here?
 
-)
+) # IconTabAuth
 
 
  # Function Authorization by School and Role
-FunctionAuth <- R6("FunctionAuth"
+FunctionAuth <- R6("FunctionAuth",
 
 	private = list(
 		StudentID = NULL,
@@ -1193,13 +1229,14 @@ FunctionAuth <- R6("FunctionAuth"
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	) # private
+	#should there be a public list here?
 
-)
+) #FunctionAuth
 
 
  # Generate and Retrieve ACT/SAT Student Reports 
-SATACTGen <- R6Class("SATACTGen"
+SATACTGen <- R6Class("SATACTGen",
 
 	private = list(
 		StudentID = NULL,
@@ -1218,7 +1255,8 @@ SATACTGen <- R6Class("SATACTGen"
 		CreatedDate = NULL,
 		ModifiedDate = NULL,
 		init = FALSE
-	),
+	) # private
+	#should there be a public list here?
 
-)
+) # SATACTGen
 
