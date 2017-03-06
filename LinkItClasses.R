@@ -43,8 +43,10 @@ library("RCurl")
 library("openssl")
 library("R6")
 
-source("LinkItURL.R")
+#source("LinkItURL.R")
 # This file does not exist yet.
+
+source("cred.R")
 
 # Define Classes ####
 
