@@ -1,5 +1,5 @@
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -#
-# Header                                                                                          ####
+# Header                                                                                       ####
 # Test version of R6 wrappers for LinkIt! REST API                                                #
 # Go to https://linkit.atlassian.net/wiki/display/LRA/LinkIt!+REST+API#suk= for more information  #
 # LinkItClasses.R                                                                                 #
@@ -40,7 +40,7 @@
 # Load Libraries ####
 library("XML")
 library("RCurl")
-library("digest")
+library("openssl")
 library("R6")
 
 source("LinkItURL.R")
