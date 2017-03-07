@@ -6,7 +6,7 @@ URLbuilder = function(url.relative, acct){
   timeStamp.noLeadingZeroes = makeTimeStamp(Sys.time())
   
   
-
+  
   #add hash
   
   #format should be address publicKey urlHashedWithPrivateKey
@@ -38,8 +38,8 @@ makeTimeStamp = function(now){
   minute = as.integer(format(now, format = "%I"))
   second = as.integer(format(now, format = "%S"))
   meridian = format(now, format = "%p")
-
+  
   return(paste0(month,"/", day,"/", year," ", hour,":", minute,":", second," ", meridian))
   
-    
+  
 }
