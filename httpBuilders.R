@@ -1,5 +1,6 @@
 #httpBuilders.R
 
+# URLbuilder ####
 URLbuilder = function(url.relative, acct){
   #it appears that the LinkIt API may want the leading zeroes stripped
   timeStamp.leadingZeroes = format(Sys.time(), format = "%m/%d/%Y %I:%M:%S %p") #generate the timestamp
@@ -17,6 +18,7 @@ URLbuilder = function(url.relative, acct){
 
 
 # - - - - - - - - - - - - - #
+# RequestBuilder ####
 
 RequestBuilder = function(acct){
   #make the request
@@ -29,6 +31,7 @@ RequestBuilder = function(acct){
 
 
 # - - - - - - - - - - - - - #
+# makeTimeStamp ####
 
 makeTimeStamp = function(now){
   month = as.integer(format(now, format = "%m"))
