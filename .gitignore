@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 cred.R
+sampleResponse.html
+cacert.pem.crt
