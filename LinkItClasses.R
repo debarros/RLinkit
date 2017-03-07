@@ -520,19 +520,14 @@ Program<- R6Class("Program",
 	
 	public = list (
 	
-		initialize = function(ProgramID = NULL,
-		Name = NULL,
-		Code = NULL,
-		AccessLevel = NULL,
-		CreatedDate = NULL,
-		ModifiedDate = NULL,
-		init = FALSE) {ProgramID = NULL,
-		Name = NULL,
-		Code = NULL,
-		AccessLevel = NULL,
-		CreatedDate = NULL,
-		ModifiedDate = NULL,
-		init = FALSE},	
+		initialize = function(ProgramID, Name, Code, AccessLevel, CreatedDate, ModifiedDate,) {
+		  private$ProgramID = NULL,
+		  private$Name = NULL,
+		  private$Code = NULL,
+		  private$AccessLevel = NULL,
+		  private$CreatedDate = NULL,
+		  private$ModifiedDate = NULL,
+		  init = TRUE},	
 
 		#The following functions assign the argument to the appropriate private variable
 		setProgramID = function(ProgramID) {
@@ -1073,7 +1068,16 @@ TestResult <- R6Class("TestResult",
 ) # TestResult
 
 
- # Test-Taker Pass-through **** ####
+
+#- - - - - - - - - - - - - - - - - - - - - - - -#
+# Pass-through and other methods                ####
+#                                               #
+# These methods are of a different sort from    #
+# the above methods. We'll get here, but it's   #
+# less pressing.                                #
+#- - - - - - - - - - - - - - - - - - - - - - - -#
+
+# Test-Taker Pass-through **** ####
 TestTaker <- R6Class("TestTaker"
       # should there be private and public lists here?
 ) # TestTaker
@@ -1106,7 +1110,7 @@ Portal <- R6Class("Portal",
 )#Portal
 
 
- # Online Review and Manual Grading Pass-through ####
+# Online Review and Manual Grading Pass-through ####
 ReviewGrading <- R6Class("ReviewGrading",
 
 	private = list(
@@ -1132,7 +1136,7 @@ ReviewGrading <- R6Class("ReviewGrading",
 ) # ReviewGrading
 
 
- # Icon/Tab Authorization by School and Role ####
+# Icon/Tab Authorization by School and Role ####
 IconTabAuth <- R6Class("IconTabAuth",
 
 	private = list(
@@ -1158,7 +1162,7 @@ IconTabAuth <- R6Class("IconTabAuth",
 ) # IconTabAuth
 
 
- # Function Authorization by School and Role ####
+# Function Authorization by School and Role ####
 FunctionAuth <- R6("FunctionAuth",
 
 	private = list(
@@ -1184,7 +1188,7 @@ FunctionAuth <- R6("FunctionAuth",
 ) #FunctionAuth
 
 
- # Generate and Retrieve ACT/SAT Student Reports ####
+# Generate and Retrieve ACT/SAT Student Reports ####
 SATACTGen <- R6Class("SATACTGen",
 
 	private = list(
