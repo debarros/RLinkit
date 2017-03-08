@@ -6,26 +6,7 @@ source("cred.R")
 source("httpBuilders.R")
 
 
-#location of the file needed for https requests
-caLocation = "cacert.pem.crt" 
-
-#set the user agent (do we need this?)
-agent="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36" 
-
-#create a CURL options object.  This can be used to set options in CURL.
-Options <- curlOptions(
-  cainfo = caLocation, 
-  useragent = agent,
-  followlocation = T,
-  verbose = T,
-  cookiejar = ""  
-)
-
-#Establish a handle to use with ongoing sessions
-LinkItHandle = getCurlHandle()
-
-#set the curl options
-curlSetOpt(.opts = Options, curl = LinkItHandle)  
+  
 
 #this is the thing to add to the url stub so access a particular function on the API
 resourceURI = "/schools?verb=search"
@@ -58,6 +39,24 @@ htmlParse(x)
 
 #put the result in a file so you can look at it in a browser
 write(x, file = "sampleResponse.html")
+
+
+
+
+
+parameters = list("PageIndex" = 1,"PageSize" = 10)
+
+
+
+  lapply(X = c(parameters), FUN = function(x){paste0(x, names(x))})
+}
+
+
+stuff = list("thing" = "otherthing")
+
+
+
+pastetoname(parameters)
 
 
 
