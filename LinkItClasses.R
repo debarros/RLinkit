@@ -1089,21 +1089,7 @@ TestTaker <- R6Class("TestTaker"
 Portal <- R6Class("Portal",
 
 	private = list(
-		StudentID = NULL,
-		FirstName = NULL,
-		MiddleName = NULL,
-		LastName = NULL,
-		Gender = NULL,
-		Race = NULL,
-		DateOfBirth = NULL,
-		LocalCode = NULL,
-		StateCode = NULL,
-		Status = NULL,
-		SISID = NULL,
-		Grade = NULL,
-		AdminSchoolID = NULL,
-		CreatedDate = NULL,
-		ModifiedDate = NULL,
+
 		init = FALSE
 	) # private
 	
@@ -1116,21 +1102,7 @@ Portal <- R6Class("Portal",
 ReviewGrading <- R6Class("ReviewGrading",
 
 	private = list(
-		StudentID = NULL,
-		FirstName = NULL,
-		MiddleName = NULL,
-		LastName = NULL,
-		Gender = NULL,
-		Race = NULL,
-		DateOfBirth = NULL,
-		LocalCode = NULL,
-		StateCode = NULL,
-		Status = NULL,
-		SISID = NULL,
-		Grade = NULL,
-		AdminSchoolID = NULL,
-		CreatedDate = NULL,
-		ModifiedDate = NULL,
+
 		init = FALSE
 	) #ReviewGrading
 	#should there be a public list here?
@@ -1142,21 +1114,6 @@ ReviewGrading <- R6Class("ReviewGrading",
 IconTabAuth <- R6Class("IconTabAuth",
 
 	private = list(
-		StudentID = NULL,
-		FirstName = NULL,
-		MiddleName = NULL,
-		LastName = NULL,
-		Gender = NULL,
-		Race = NULL,
-		DateOfBirth = NULL,
-		LocalCode = NULL,
-		StateCode = NULL,
-		Status = NULL,
-		SISID = NULL,
-		Grade = NULL,
-		AdminSchoolID = NULL,
-		CreatedDate = NULL,
-		ModifiedDate = NULL,
 		init = FALSE
 	) # private
 	#should there be a public list here?
@@ -1168,25 +1125,15 @@ IconTabAuth <- R6Class("IconTabAuth",
 FunctionAuth <- R6("FunctionAuth",
 
 	private = list(
-		StudentID = NULL,
-		FirstName = NULL,
-		MiddleName = NULL,
-		LastName = NULL,
-		Gender = NULL,
-		Race = NULL,
-		DateOfBirth = NULL,
-		LocalCode = NULL,
-		StateCode = NULL,
-		Status = NULL,
-		SISID = NULL,
-		Grade = NULL,
-		AdminSchoolID = NULL,
-		CreatedDate = NULL,
-		ModifiedDate = NULL,
+    SchoolID = NULL,
 		init = FALSE
-	) # private
+	), # private
 	#should there be a public list here?
 
+  public = list(
+    initialize = function () {}
+    
+  )	 # public
 ) #FunctionAuth
 
 
@@ -1194,21 +1141,7 @@ FunctionAuth <- R6("FunctionAuth",
 SATACTGen <- R6Class("SATACTGen",
 
 	private = list(
-		StudentID = NULL,
-		FirstName = NULL,
-		MiddleName = NULL,
-		LastName = NULL,
-		Gender = NULL,
-		Race = NULL,
-		DateOfBirth = NULL,
-		LocalCode = NULL,
-		StateCode = NULL,
-		Status = NULL,
-		SISID = NULL,
-		Grade = NULL,
-		AdminSchoolID = NULL,
-		CreatedDate = NULL,
-		ModifiedDate = NULL,
+	  Ticekt = NULL,
 		init = FALSE
 	) # private
 	#should there be a public list here?
