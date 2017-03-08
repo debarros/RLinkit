@@ -34,6 +34,7 @@ RequestBuilder = function(acct){
 # makeTimeStamp ####
 
 makeTimeStamp = function(now){
+  now = as.POSIXlt(now, tz = "GMT")
   month = as.integer(format(now, format = "%m"))
   day = as.integer(format(now, format = "%d"))
   year = as.integer(format(now, format = "%Y"))
@@ -41,8 +42,5 @@ makeTimeStamp = function(now){
   minute = as.integer(format(now, format = "%I"))
   second = as.integer(format(now, format = "%S"))
   meridian = format(now, format = "%p")
-  
   return(paste0(month,"/", day,"/", year," ", hour,":", minute,":", second," ", meridian))
-  
-  
 }
