@@ -636,14 +636,16 @@ DTerm <- R6Class(
     #
     # Basic, generic functions
     #
-    initialize = function(DistrictTermID = NULL,
-                          Name = NULL,
-                          Code = NULL,
-                          DateStart = NULL,
-                          DateEnd = NULL,
-                          CreatedDate = NULL,
-                          ModifiedDate = NULL,
-                          init = FALSE) {DistrictTermID = NULL
+    initialize = function(DistrictTermID, Name, Code, DateStart, DateEnd, CreatedDate, ModifiedDate) {
+	  private$DistrictTermID = DistrictTermID
+	  private$Name = Name
+      private$Code = Code
+      private$DateStart = DateStart
+      private$DateEnd = DateEnd
+      private$CreatedDate = CreatedDate
+      private$ModifiedDate = ModifiedDate
+      init = TRUE
+	}
                           Name = NULL
                           Code = NULL
                           DateStart = NULL
@@ -759,8 +761,7 @@ Roster <- R6Class(
     #
     # Basic, generic functions
     #
-    initialize = function(DistrictTermID = NULL, Name = NULL, Code = NULL, DateStart = NULL,
-                          DateEnd = NULL, CreatedDate = NULL, ModifiedDate = NULL, init = FALSE) {
+    initialize = function(DistrictTermID, Name, Code, DateStart, DateEnd, CreatedDate, ModifiedDate) {
       DistrictTermID = NULL
       Name = NULL
       Code = NULL
@@ -902,9 +903,9 @@ TestGen <- R6Class(
     #
     # Basic, generic functions
     #
-    initialize = function(TestID = NULL, TestName = NULL, BankID = NULL, BankName = NULL, Subject	= NULL, 
-                          Grade = NULL, AuthorID = NULL, AuthorFirstName = NULL, AuthorLastName = NULL, 
-                          CreatedDate = NULL, ModifiedDate = NULL, init = FALSE) {
+    initialize = function(TestID, TestName, BankID, BankName, Subject	= NULL, 
+                          Grade, AuthorID, AuthorFirstName, AuthorLastName, 
+                          CreatedDate, ModifiedDate, init = FALSE) {
       TestID = NULL
       TestName = NULL
       BankID = NULL
