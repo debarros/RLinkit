@@ -39,7 +39,7 @@ URLbuilder = function(url.resource, acct, parameters = list()){
   tStamp = makeTimeStamp()
   
   #Build the basic url
-  url.partial = paste0(url.stub,url.resource, parameters, "&TimeStamp=", tStamp, "&AccessKey=", akey)
+  url.partial = paste0(url.stub,url.resource, paramString, "&TimeStamp=", tStamp, "&AccessKey=", akey)
   
   #Complete the url by appending the hashed version
   url.complete = paste0(url, "&Tag=",sha1(url, key = PrivateKey))
@@ -50,28 +50,7 @@ URLbuilder = function(url.resource, acct, parameters = list()){
 
 
 
-# - - - - - - - - - - - - - #
-# RequestBuilder ####
-# the resource is the type of thing we are trying to do, such as search for schools
-RequestBuilder = function(acct, handle, resource, parameters = list()){
-  
-  #Determine the relative url
-  url.relative = "/schools?verb=search" #this should be based on the actual resource needed
-  
-  #add any additional paramters specific to the resource
-  parameters = someFunction(parameters, resource)
-  
-  #make the URL
-  url = URLbuilder(url.relative, acct, parameters) #get the url
-  
-  #retrieve it
-  response = getURI(url.complete, httpheader = c(Accept="application/xml",'Content-Type' = "application/xml"), curl = handle)
-  
-  #parse it based on the the resource type
-  ret = someOtherFunction(response, resource)
-  
-  return(ret)
-}
+
 
 
 
