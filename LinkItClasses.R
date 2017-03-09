@@ -158,23 +158,31 @@ School <- R6Class("School",
 		#
 		# CRUD methods
 		#
-		Create = function() {
+		Create = function(name, local.code, state.code, state.abbr) {
+		  # Call request builder
+		  
+		  # this$Sync() ? self$Sync()?
+		  
 		},
 		
-		Read = function() {
+		Read = function(school.id, name, local.code, state.code, created.date, modified.date, status, state.abbr) {
 		},
 		
-		Update = function() {
+		Update = function(school.id, name, local.code, state.code, created.date, modified.date, status, state.abbr) {
 		# Updates the school in the LinkIt database.
 		# This implementation includes the informationt that is not being updated in the request 
 		# to ensure synchronicity between client and server.
 		},
 		
-		Delete = function() {
+		Delete = function(school.id, name, local.code, state.code, created.date, modified.date, status, state.abbr) {
 		},
 		
 		Sync = function() {
 		# synchronizes School object to match LinkIt! data for identical SchoolID.
+		  
+		  #Read?
+		  
+		  #xml init or json init
 		}
 	) # public
 ) # School
