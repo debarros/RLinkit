@@ -956,19 +956,16 @@ TestAssign <- R6Class(
   classname = "TestAssign",
   
   private = list(
+    TestAssignmentID = NULL,
+    TestID = NULL,
+    ClassID = NULL,
     StudentID = NULL,
-    FirstName = NULL,
-    MiddleName = NULL,
-    LastName = NULL,
-    Gender = NULL,
-    Race = NULL,
-    DateOfBirth = NULL,
-    LocalCode = NULL,
-    StateCode = NULL,
+    Type = NULL,
+    TutorialMode = NULL,
     Status = NULL,
-    SISID = NULL,
-    Grade = NULL,
-    AdminSchoolID = NULL,
+    Code = NULL,
+    ComparisonPasscodeLength = NULL,
+    AssignmentGUID = NULL,
     CreatedDate = NULL,
     ModifiedDate = NULL,
     init = FALSE
@@ -979,7 +976,21 @@ TestAssign <- R6Class(
     #
     # Basic, generic functions
     #	
-    initialize = function() {},
+    initialize = function(TestAssignmentID, TestID, ClassID, StudentID, Type, TutorialMode, Status, Code, ComparisonPasscodeLength, AssignmentGUID, CreatedDate, ModifiedDate) {
+	  private$TestAssignmentID = TestAssignmentID
+      private$TestID = TestID
+      private$ClassID = ClassID
+      private$StudentID = StudentID
+      private$Type = Type
+      private$TutorialMode = TutorialMode
+      private$Status = Status
+      private$Code = Code
+      private$ComparisonPasscodeLength = ComparisonPasscodeLength
+      private$AssignmentGUID = AssignmentGUID
+      private$CreatedDate = CreatedDate
+      private$ModifiedDate = ModifiedDate
+	  init = TRUE
+	  },
     
     #
     # special use functions
@@ -1018,21 +1029,38 @@ TestResult <- R6Class(
   classname = "TestResult",
   
   private = list(
+    TestResultID = NULL,	
+    TestID = NULL,
+    TestName = NULL,
+    DistrictTermID = NULL,
+    DistrictTermName = NULL,
+    SchoolID = NULL,
+    SchoolName = NULL,
+    ClassID = NULL,
+    CourseName = NULL,
+    Section = NULL,
+    TeacherID = NULL,
+    TeacherCode = NULL,
+    TeacherUserName = NULL,
     StudentID = NULL,
-    FirstName = NULL,
-    MiddleName = NULL,
-    LastName = NULL,
-    Gender = NULL,
-    Race = NULL,
-    DateOfBirth = NULL,
-    LocalCode = NULL,
-    StateCode = NULL,
-    Status = NULL,
-    SISID = NULL,
-    Grade = NULL,
-    AdminSchoolID = NULL,
-    CreatedDate = NULL,
+    StudentCode = NULL,
+    StudentFirstName = NULL,
+    StudentLastName = NULL,
+    TotalPointsPossible = NULL,
+    TotalPointsEarned = NULL,
+    PercentScore = NULL,
+    ResultDate = NULL,
+    GradingStatus = NULL,
+    TestMethod = NULL,
+    CreatedDat = NULL,
     ModifiedDate = NULL,
+    TestMethod = NULL,
+    AdjustedPointsEared = NULL,	
+    AdjustedPercentScore = NULL,
+    ScaledScore = NULL,
+    PercentileScore = NULL,
+    LexileScore = NULL,
+    SubScore = NULL,
     init = FALSE
   ), # private
   
@@ -1041,7 +1069,41 @@ TestResult <- R6Class(
     #
     # Basic, generic functions
     #
-    initialize = function() {},
+    initialize = function(TestResultID, TestID, TestName, DistrictTermID, DistrictTermName, SchoolID, SchoolName, ClassID, CourseName, Section, TeacherID, TeacherCode, TeacherUserName, StudentID, StudentCode, StudentFirstName, StudentLastName, TotalPointsPossible, TotalPointsEarned, PercentScore, ResultDate, GradingStatus, TestMethod, CreatedDate, ModifiedDate, TestMethod, AdjustedPointsEarned, AdjustedPercentScore, ScaledScore, PercentileScore, LexileScore, SubScore) {
+      TestResultID = TestResultID
+      TestID = TestID
+      TestName = TestName
+      DistrictTermID = DistrictTermID
+      DistrictTermName = DistrictTermName
+      SchoolID = SchoolID
+      private$SchoolName = SchoolName
+      private$ClassID = ClassID	
+      private$CourseName = CourseName	
+      private$Section = Section
+      private$TeacherID = TeacherID
+      private$TeacherCode = TeacherCode
+      private$TeacherUserName = TeacherUserName
+      private$StudentID = StudentID
+      private$StudentCode = StudentCode
+      private$StudentFirstName = StudentFirstName
+      private$StudentLastName = StudentLastName
+      private$TotalPointsPossible = TotalPointsPossible
+      private$TotalPointsEarned = TotalPointsEarned	
+      private$PercentScore = PercentScore	
+      private$ResultDate = ResultDate	
+      private$GradingStatus = GradingStatus
+      private$TestMethod = TestMethod
+      private$CreatedDate = CreatedDate
+      private$ModifiedDate = ModifiedDate
+      private$TestMethod = TestMethod
+      private$AdjustedPointsEarned = AdjustedPointsEarned
+      private$AdjustedPercentScore = AdjustedPercentScore
+      private$ScaledScore = ScaledScore
+      private$PercentileScore = PercentileScore
+      private$LexileScore = LexileScore
+      private$SubScore = SubScore
+      init = TRUE
+    },
     
     #
     # special use functions
