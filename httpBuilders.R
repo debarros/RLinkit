@@ -33,7 +33,7 @@ URLbuilder = function(url.resource, acct, parameters = list()){
   }
   
   #Set the PublicKey to be used as the AccessKey
-  akey = PublicKey #get it from acct
+  akey = acct$getPubKey() #get it from acct
   
   #get the current date and time, properly formatted
   tStamp = makeTimeStamp()
@@ -42,7 +42,7 @@ URLbuilder = function(url.resource, acct, parameters = list()){
   url.partial = paste0(url.stub,url.resource, paramString, "&TimeStamp=", tStamp, "&AccessKey=", akey)
   
   #Complete the url by appending the hashed version
-  url.complete = paste0(url, "&Tag=",sha1(url, key = PrivateKey))
+  url.complete = paste0(url.partial, "&Tag=",sha1(url.partial, key = acct$getPriKey()))
   
   return(url.complete)
 }
