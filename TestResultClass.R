@@ -46,7 +46,6 @@ TestResult <- R6Class(
     TestMethod = NULL,
     CreatedDat = NULL,
     ModifiedDate = NULL,
-    TestMethod = NULL,
     AdjustedPointsEared = NULL,	
     AdjustedPercentScore = NULL,
     ScaledScore = NULL,
@@ -61,13 +60,21 @@ TestResult <- R6Class(
     #
     # Basic, generic functions
     #
-    initialize = function(TestResultID, TestID, TestName, DistrictTermID, DistrictTermName, SchoolID, SchoolName, ClassID, CourseName, Section, TeacherID, TeacherCode, TeacherUserName, StudentID, StudentCode, StudentFirstName, StudentLastName, TotalPointsPossible, TotalPointsEarned, PercentScore, ResultDate, GradingStatus, TestMethod, CreatedDate, ModifiedDate, TestMethod, AdjustedPointsEarned, AdjustedPercentScore, ScaledScore, PercentileScore, LexileScore, SubScore) {
-      TestResultID = TestResultID
-      TestID = TestID
-      TestName = TestName
-      DistrictTermID = DistrictTermID
-      DistrictTermName = DistrictTermName
-      SchoolID = SchoolID
+    initialize = function(TestResultID, TestID, TestName, DistrictTermID, 
+                          DistrictTermName, SchoolID, SchoolName, ClassID, 
+                          CourseName, Section, TeacherID, TeacherCode, 
+                          TeacherUserName, StudentID, StudentCode, 
+                          StudentFirstName, StudentLastName, TotalPointsPossible, 
+                          TotalPointsEarned, PercentScore, ResultDate, 
+                          GradingStatus, TestMethod, CreatedDate, ModifiedDate, 
+                          AdjustedPointsEarned, AdjustedPercentScore, 
+                          ScaledScore, PercentileScore, LexileScore, SubScore) {
+      private$TestResultID = TestResultID
+      private$TestID = TestID
+      private$TestName = TestName
+      private$DistrictTermID = DistrictTermID
+      private$DistrictTermName = DistrictTermName
+      private$SchoolID = SchoolID
       private$SchoolName = SchoolName
       private$ClassID = ClassID	
       private$CourseName = CourseName	
@@ -94,7 +101,7 @@ TestResult <- R6Class(
       private$PercentileScore = PercentileScore
       private$LexileScore = LexileScore
       private$SubScore = SubScore
-      init = TRUE
+      private$init = TRUE
     },
     
     #
