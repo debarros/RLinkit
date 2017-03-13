@@ -96,7 +96,7 @@ School <- R6Class(
                  "Last Modified in LinkIt!:\t", private$ModifiedDate, "\n",
                  "- -")
       return(ret)
-    }
+    },
     
     print = function() {
       print(self$toString())
@@ -123,7 +123,7 @@ School <- R6Class(
     Create = function(name, local.code, state.code, state.abbr) {
       # Call request builder
       # this$Sync() ? self$Sync()
-    }
+    },
     
     Read = function(school.id, name, local.code, state.code, created.date, modified.date, status, state.abbr) {
     },
