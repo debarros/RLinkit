@@ -9,53 +9,14 @@ source("functions.R")
 myAccount = Account$new("development")
 myAccount$getUrlStub()  
 
-searchAPI(acct = myAccount, handle = LinkItHandle, resource = "schools")
+searchAPI(acct = myAccount, handle = LinkItHandle, resource = "school")
 
-#this is the thing to add to the url stub so access a particular function on the API
-resourceURI = "/schools?verb=search"
-
-#get the current date and time, properly formatted
-tStamp = makeTimeStamp(Sys.time())
-
-#Set the PublicKey to be used as the AccessKey
-akey = PublicKey
-
-#Build the parameters that will be appended to the url
-parameters = paste0("&PageIndex=",1,"&PageSize=",10,"&TimeStamp=", tStamp, "&AccessKey=", akey)
+x = searchAPI(acct = myAccount, handle = LinkItHandle, resource = "result") #,parameters = list("PageSize" = "1"))
 
 
-#Build the basic url
-url = paste0(urlStub, resourceURI, parameters)
+y.xmlToList = xmlToList(x)
 
-#Complete the url by appending the hashed version
-url.complete = paste0(url, "&Tag=",sha1(url, key = PrivateKey))
+str(y, give.attr = F, max.level = 3)
+nRecords = y.xmlToList$Data$TotalRecords
 
-#make the request
-x = getURI(url.complete, httpheader = c(Accept="application/xml",'Content-Type' = "application/xml"), curl = LinkItHandle)
-
-#look at the result
-htmlParse(x)
-
-#put the result in a file so you can look at it in a browser
-write(x, file = "sampleResponse.html")
-
-
-
-
-
-parameters = list("PageIndex" = 1,"PageSize" = 10)
-
-
-
-  lapply(X = c(parameters), FUN = function(x){paste0(x, names(x))})
-}
-
-
-stuff = list("thing" = "otherthing")
-
-
-
-pastetoname(parameters)
-
-
-
+str(y.xmlToList$Data, max.level = 2, give.attr = F)
