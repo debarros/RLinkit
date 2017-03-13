@@ -7,8 +7,11 @@ library("openssl")
 library("R6")
 
 
-# Source functions and other stuff ####
+# Source static data ####
 source("cred.R")
+resources = read.csv(file = "resourceTable.csv", stringsAsFactors = F)
+
+# Source functions and other stuff ####
 source("httpBuilders.R")
 source("searchAPI.R")
 
