@@ -41,16 +41,7 @@
 #   Generate and Retrieve Reports   |   
 #
 
-# Load Libraries ####
-library("XML")
-library("RCurl")
-library("openssl")
-library("R6")
 
-#source("LinkItURL.R")
-# This file does not exist yet.
-
-source("cred.R")
 
 # Define Classes ####
 
@@ -110,7 +101,7 @@ IconTabAuth <- R6Class(
 
 
 # Function Authorization by School and Role ####
-FunctionAuth <- R6(
+FunctionAuth <- R6Class(
   classname = "FunctionAuth",
   
   private = list(
