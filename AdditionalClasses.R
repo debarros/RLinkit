@@ -10,16 +10,25 @@ Account <- R6Class(
     pem.address = "",
     urlStub.dev = "",
     urlStub.prod = "",
-    mode = factor(x = integer(), levels = c("development", "production"))
+    mode = factor(x = integer(), levels = c("development", "production")),
+    pubKey = PublicKey,
+    priKey = PrivateKey
   ),
   
   public = list(
-    initialize = function(){
-      
+    Name = NULL,
+    initialize = function(name = NA){
+      self$name = name
     },
-    toString = function(){
-      
+    toString = function(val = NA){
+      print("nothing here yet")
     },
+    getpubKey = function() {
+      return(private$pubKey)
+    },
+    getpriKey = function() {
+      return(private$priKey)
+    }
     #make set functions for each thingy in private
     #make get functions for each thingy in private
   )
