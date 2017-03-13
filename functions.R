@@ -6,6 +6,12 @@ library("RCurl")
 library("openssl")
 library("R6")
 
+
+# Source functions and other stuff ####
+source("cred.R")
+source("httpBuilders.R")
+source("searchAPI.R")
+
 # Source classes ####
 source("AdditionalClasses.R")
 source("LinkItClasses.R")
@@ -19,7 +25,4 @@ source("TestAssignClass.R")
 source("TestResultClass.R")
 
 
-# Source functions and other stuff ####
-source("cred.R")
-source("httpBuilders.R")
-source("searchAPI.R")
+
