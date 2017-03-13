@@ -4,9 +4,12 @@ library("openssl")
 library("R6")
 source("cred.R")
 source("httpBuilders.R")
+source("functions.R")
 
+myAccount = Account$new("development")
+myAccount$getUrlStub()  
 
-  
+searchAPI(acct = myAccount, handle = LinkItHandle, resource = "schools")
 
 #this is the thing to add to the url stub so access a particular function on the API
 resourceURI = "/schools?verb=search"
@@ -20,10 +23,6 @@ akey = PublicKey
 #Build the parameters that will be appended to the url
 parameters = paste0("&PageIndex=",1,"&PageSize=",10,"&TimeStamp=", tStamp, "&AccessKey=", akey)
 
-#Fix the weird characters in the paramaters (these might all come from the date and time, so maybe put this stuff in makeTimeStamp?)
-parameters = gsub(pattern = " ", replacement = "+", x = parameters)
-parameters = gsub(pattern = "/", replacement = "%2f", x = parameters)
-parameters = gsub(pattern = ":", replacement = "%3a", x = parameters)
 
 #Build the basic url
 url = paste0(urlStub, resourceURI, parameters)
