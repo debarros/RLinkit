@@ -32,7 +32,7 @@ Program<- R6Class(
   
   public = list (
     
-    initialize = function(ProgramID, Name, Code, AccessLevel, CreatedDate, ModifiedDate,) {
+    initialize = function(ProgramID, Name, Code, AccessLevel, CreatedDate, ModifiedDate) {
       private$ProgramID = NULL
       private$Name = NULL
       private$Code = NULL
