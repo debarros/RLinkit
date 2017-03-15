@@ -6,3 +6,6 @@ cred.R
 sampleResponse.html
 cacert.pem.crt
 ToDo.html
+recentScores.csv
+reportableTests.csv
+ScoreUpdates.txt
