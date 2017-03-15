@@ -8,12 +8,13 @@ library("R6")
 
 
 # Source static data ####
-source("cred.R")
 resources = read.csv(file = "resourceTable.csv", stringsAsFactors = F)
 
 # Source functions and other stuff ####
 source("httpBuilders.R")
 source("searchAPI.R")
+source("RecentResults.R")
+source("SummarizeResults.R")
 
 # Source classes ####
 source("AdditionalClasses.R")
@@ -28,4 +29,11 @@ source("TestAssignClass.R")
 source("TestResultClass.R")
 
 
+
+# Short functions ####
+nullToNA_char = function(x){
+  if(is.null(x)){return(NA_character_)
+  } else {return(x)} }
+
+nullToNA_char.list = function(x){return(lapply(x, nullToNA_char))}
 
