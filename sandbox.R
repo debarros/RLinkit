@@ -20,8 +20,8 @@ View(ResultFrame)
 View(ResultSummary)
 
 
-
-
-
+#Create output of the scores that need quick updates or reports
+cap = 20 #only tests with fewer than cap new scores will be included in the quick updates
+ScoreUpdates(ResultFrame, ResultSummary, cap)
 
 
