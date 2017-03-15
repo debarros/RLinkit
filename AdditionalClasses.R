@@ -11,12 +11,11 @@ Account <- R6Class(
     urlStub = list("development" = "https://www.linkitdev.com/restapi/v1", 
                    "production" = "https://www.linkit.com/restapi/v1"),
     mode = factor(x = integer(), levels = c("development", "production")),
-    pubKey = PublicKey, #this should be fixed
-    priKey = PrivateKey #this should be fixed
+    pubKey = NA_character_,
+    priKey = NA_character_
   ),
   
   public = list(
-    Name = NULL,
     initialize = function(mode){
       private$mode = mode
     },
@@ -26,7 +25,9 @@ Account <- R6Class(
     getPubKey = function() {return(private$pubKey)},
     getPriKey = function() {return(private$priKey)},
     getUrlStub = function(){return(private$urlStub[private$mode][[1]])}, #the [[1]] makes it return just an atomic, unnamed character value
-    getMode = function(){return(private$mode)}
+    getMode = function(){return(private$mode)},
+    setPubKey = function(key){private$pubKey = key},
+    setPriKey = function(key){private$priKey = key}
     #make set functions for each thingy in private
     #make get functions for each thingy in private
   )
