@@ -1,22 +1,27 @@
-library("XML")
-library("RCurl")
-library("openssl")
-library("R6")
 source("cred.R")
-source("httpBuilders.R")
 source("functions.R")
 
+#set the account
 myAccount = Account$new("development")
-myAccount$getUrlStub()  
+myAccount$setPriKey(PrivateKey)
+myAccount$setPubKey(PublicKey)
 
-searchAPI(acct = myAccount, handle = LinkItHandle, resource = "school")
+#set the last time results were pulled (will want to source this from somewhere)
+lastTime = strptime("2017-02-01 10:32:36", format = "%Y-%m-%d %H:%M:%S")
 
-x = searchAPI(acct = myAccount, handle = LinkItHandle, resource = "result") #,parameters = list("PageSize" = "1"))
+#Get all the results since lastTime
+ResultFrame = RecentResults(myAccount, LinkItHandle, lastTime)
+
+#Summarize the results since lastTime
+ResultSummary = SummarizeResults(ResultFrame)
+
+#Take a look at the output
+View(ResultFrame)
+View(ResultSummary)
 
 
-y.xmlToList = xmlToList(x)
 
-str(y, give.attr = F, max.level = 3)
-nRecords = y.xmlToList$Data$TotalRecords
 
-str(y.xmlToList$Data, max.level = 2, give.attr = F)
+
+
+
