@@ -5,7 +5,7 @@ library("XML")
 library("RCurl")
 library("openssl")
 library("R6")
-
+library("stringr")
 
 # Source static data ####
 resources = read.csv(file = "resourceTable.csv", stringsAsFactors = F)
