@@ -15,6 +15,7 @@ source("httpBuilders.R")
 source("searchAPI.R")
 source("RecentResults.R")
 source("SummarizeResults.R")
+source("ScoreUpdates.R")
 
 # Source classes ####
 source("AdditionalClasses.R")
