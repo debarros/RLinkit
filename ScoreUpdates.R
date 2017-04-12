@@ -13,10 +13,33 @@ ScoreUpdates = function(ResultFrame,ResultSummary,cap){
   #Create a student name variable in the ResultFrame
   x$StudentName = paste0(x$StudentLastName, ", ", x$StudentFirstName)
   
+  
+  x$CourseSection = paste0(x$CourseName, " - ", x$Section)
+  
   #Get the score updates
   
   #Identify the tests that have fewer than cap scans, don't require special scoring, and are not Humanities
   updateTests = y$TestName[y$Count < cap & !grepl(pattern = ">", x = y$TestName) & !grepl(pattern = "H[2-3] ", x = y$TestName)]
+  
+  #Subset y to just the reportable tests
+  y = y[!(y$TestName %in% updateTests),]
+  
+  #Include the section names
+  y$section = NA_character_
+  y$sectionCount = NA_character_
+  for(i in colnames(y)){y[,i] = as.character(y[,i])}
+  reportable = y[0,]
+  for(i in 1:nrow(y)){
+    thisTest = y$TestID[i]
+    sections = unique(x$CourseSection[x$TestID == thisTest])
+    for(j in 1:length(sections)){
+      a = y[i,]
+      a$section = sections[j]
+      a$sectionCount = sum(x$TestID == thisTest & x$CourseSection == sections[j])
+      reportable = rbind.data.frame(reportable, a, stringsAsFactors = F)
+    }
+    reportable = rbind.data.frame(reportable, rep("",times=ncol(reportable)), stringsAsFactors = F)
+  }
   
   #Limit to just the tests and columns of interest
   x =  x[x$TestName %in% updateTests,c("TestName","StudentName", "StudentCode", "PercentScore", "ModifiedDate")]
@@ -25,12 +48,10 @@ ScoreUpdates = function(ResultFrame,ResultSummary,cap){
   x = x[order(x$StudentName),]
   x = x[order(x$TestName),]
   
-  #Subset y to just the reportable tests
-  y = y[!(y$TestName %in% updateTests),]
   
   #Create the output
   write.csv(x, file = "recentScores.csv")
-  write.csv(y, file = "reportableTests.csv")
+  write.csv(reportable, file = "reportableTests.csv")
   
   #Create the formated score update output
   #This part might not work yet
