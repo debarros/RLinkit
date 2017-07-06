@@ -6,6 +6,9 @@ library("RCurl")
 library("openssl")
 library("R6")
 library("stringr")
+library("openxlsx")
+library("rrttReportBuilder")
+library(googlesheets)
 
 # Source static data ####
 resources = read.csv(file = "resourceTable.csv", stringsAsFactors = F)
