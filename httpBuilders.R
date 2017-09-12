@@ -56,7 +56,12 @@ URLbuilder = function(url.resource, acct, parameters = list()){
 #   1) The time has to be in UTC (aka GMT or Greenwich Mean Time)
 #   2) Leading zeroes must be stripped from every component
 makeTimeStamp = function(now = Sys.time()){
-  now = as.POSIXlt(now, tz = "GMT") #time zone conversion requires POSIXlt instead of the POSIXct object returned by Sys.time()
+  
+  #time zone conversion requires converting a POSIXct object to POSIXlt
+  now = as.POSIXct(now) # make sure the datetime is POSIXct to begin with
+  now = as.POSIXlt(now, tz = "GMT") # change the time zone using a conversion to POSIXlt
+  
+  # extract the various components, converting to integer to strip leading zeroes where necessary
   month = as.integer(format(now, format = "%m"))
   day = as.integer(format(now, format = "%d"))
   year = as.integer(format(now, format = "%Y"))
@@ -64,6 +69,10 @@ makeTimeStamp = function(now = Sys.time()){
   minute = as.integer(format(now, format = "%M"))
   second = as.integer(format(now, format = "%S"))
   meridian = format(now, format = "%p")
-  return(paste0(month,"%2f", day,"%2f", year,"+", hour,"%3a", minute,"%3a", second,"+", meridian))
+  
+  # compile the formatted timestamp
+  ret = paste0(month,"%2f", day,"%2f", year,"+", hour,"%3a", minute,"%3a", second,"+", meridian)
+  
+  return(ret)
 }
 
