@@ -11,6 +11,7 @@ Account <- R6Class(
     urlStub = list("development" = "https://www.linkitdev.com/restapi/v1", 
                    "production" = "https://www.linkit.com/restapi/v1"),
     mode = factor(x = integer(), levels = c("development", "production")),
+    mime = factor(x = integer(), levels = c("json", "xml")),
     pubKey = NA_character_,
     priKey = NA_character_
   ),

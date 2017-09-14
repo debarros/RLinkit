@@ -14,7 +14,7 @@ searchAPI = function(acct, handle, resource, parameters = list()){
   #parameters = someFunction(parameters, resource)
   
   #determine the headers required
-  httpheaders = c(Accept="application/xml",'Content-Type' = "application/xml")
+  httpheaders = c(Accept=paste("application/", acct$mime, sep=""),'Content-Type' = paste("application/", acct$mime, sep=""))
   
   #make the URL
   url.complete = URLbuilder(url.resource, acct, parameters) #get the url
