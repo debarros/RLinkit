@@ -15,6 +15,7 @@ lastTime = as.character(lastTime$LastTime[1])
 lastTime = strptime(lastTime, format = "%Y-%m-%d %H:%M:%S")
 lastTime = as.POSIXct(lastTime)
 
+
 #----------------------#
 #### LinkIt section ####
 #----------------------#
@@ -33,15 +34,14 @@ ResultFrame = RecentResults(acct = myAccount, handle = LinkItHandle, lastTime = 
 # See if there are any results that need to be resolved before they can be reported
 # Counts of results in each grading status
 summary(factor(ResultFrame$GradingStatus)) 
+summary(ResultFrame$ModifiedDate)
+
 
 # tests that need review
-unique(ResultFrame$TestName[ResultFrame$GradingStatus %in% c("Incomplete", "Multi-Mark")]) 
+unique(ResultFrame$TestName[ResultFrame$GradingStatus %in% c("Incomplete", "Multi-Mark", "Blank")]) 
 
 # Sections that need review
-unique(apply(X = ResultFrame[ResultFrame$GradingStatus %in% c("Incomplete", "Multi-Mark"),c("CourseName", "Section")], MARGIN = 1, paste, collapse = " "))
-
-# Not really sure why the next line is necessary
-ResultFrame = ResultFrame[ResultFrame$ModifiedDate >= lastTime,]
+unique(apply(X = ResultFrame[ResultFrame$GradingStatus %in% c("Incomplete", "Multi-Mark", "Blank"),c("CourseName", "Section")], MARGIN = 1, paste, collapse = " "))
 
 # Summarize the results since lastTime
 ResultSummary = SummarizeResults(ResultFrame)
@@ -65,7 +65,7 @@ print(missingTests)
 TAB = read.xlsx(xlsxFile = "J:/tests/2017-2018/TAB.xlsx")
 
 # Print out the tests that will need score files exported from LinkIt
-ResultSummary$TestName
+sort(ResultSummary$TestName)
 # Download the student item response files for those exams.  
 # Protip: select all of them and click View Summary.  
 #         Then, for each one, click on the magnifying glass to get to the exports.
@@ -74,9 +74,8 @@ ResultSummary$TestName
 
 # Generate the reports
 for(i in 1:nrow(ResultSummary)){
-  generateReport(DataLocation = TAB$Folder.location[TAB$TestName == ResultSummary$TestName[i]])
+  generateReport(DataLocation = TAB$Local.folder[TAB$TestName == ResultSummary$TestName[i]])
 }
-
 
 
 #--------------------------#
@@ -92,12 +91,12 @@ if(nrow(ScannedTests) > 0){
 }
 
 # Modify ScannedTests to include the newly scanned tests
-NewScannedTests = data.frame(Test = ResultSummary$TestName, Folder = TAB$Folder.location[match(ResultSummary$TestName,TAB$TestName)], Analyze = T, Update = F, Monitor = T)
+NewScannedTests = data.frame(Test = ResultSummary$TestName, Folder = TAB$Local.folder[match(ResultSummary$TestName,TAB$TestName)], Analyze = T, Update = F, Monitor = T)
 AllScannedTests = rbind(ScannedTests, NewScannedTests)
 UniqueScannedTests = AllScannedTests[!duplicated(AllScannedTests$Test),]
 for(i in 1:nrow(UniqueScannedTests)){
   for(j in c("Analyze","Update","Monitor")){
-    UniqueScannedTests[1,j] = any(unlist(AllScannedTests[AllScannedTests$Test == UniqueScannedTests$Test[i],j]))
+    UniqueScannedTests[i,j] = any(unlist(AllScannedTests[AllScannedTests$Test == UniqueScannedTests$Test[i],j]))
   }
 }
 
