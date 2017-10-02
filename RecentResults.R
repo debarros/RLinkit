@@ -30,9 +30,9 @@ RecentResults = function(acct, handle, lastTime){
   ResultFrame <- setNames(data.frame(matrix(unlist(newresult), nrow=length(newresult), byrow=T),stringsAsFactors=FALSE), names(newresult[[1]]))
   
   #Convert the data elements to dates
-  ResultFrame$ResultDate = as.POSIXlt(strptime(ResultFrame$ResultDate, format = "%m/%d/%Y %H:%M:%S %p"))
-  ResultFrame$CreatedDate = as.POSIXlt(strptime(ResultFrame$CreatedDate, format = "%m/%d/%Y %H:%M:%S %p"))
-  ResultFrame$ModifiedDate = as.POSIXlt(strptime(ResultFrame$ModifiedDate, format = "%m/%d/%Y %H:%M:%S %p"))
+  ResultFrame$ResultDate = as.POSIXlt(strptime(ResultFrame$ResultDate, format = "%m/%d/%Y %I:%M:%S %p"))
+  ResultFrame$CreatedDate = as.POSIXlt(strptime(ResultFrame$CreatedDate, format = "%m/%d/%Y %I:%M:%S %p"))
+  ResultFrame$ModifiedDate = as.POSIXlt(strptime(ResultFrame$ModifiedDate, format = "%m/%d/%Y %I:%M:%S %p"))
   
   return(ResultFrame)
 }
